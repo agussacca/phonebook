@@ -15,3 +15,23 @@ Content-Type: application/json
     "name": "Arto Hellas",
     "number": "0000000"
 }
+
+###
+
+POST https://phonebook-i1vu.onrender.com/api/persons
+Content-Type: application/json
+
+{ 
+    "name": "test",
+    "number": "0000000"
+}
+
+###
+
+POST https://phonebook-i1vu.onrender.com/api/persons
+Content-Type: application/json
+
+{ 
+    "name": "Arto Hellas",
+    "number": "0000000"
+}
