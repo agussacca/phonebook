@@ -11,6 +11,7 @@ app.use(express.json()) //siempre antes del logger
 
 //Logger
 var morgan = require('morgan')
+// eslint-disable-next-line no-unused-vars
 morgan.token('body', function (req, res) { return JSON.stringify(req.body) })
 
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :body'))
@@ -33,10 +34,10 @@ app.get('/info', (request, response, next) => {
 
 app.get('/api/persons', (request, response, next) => {
   Person.find({})
-  .then(persons => {
-    response.json(persons)
-  })
-  .catch(error => next(error))
+    .then(persons => {
+      response.json(persons)
+    })
+    .catch(error => next(error))
 })
 
 app.get('/api/persons/:id', (request, response, next) => {
@@ -54,7 +55,7 @@ app.get('/api/persons/:id', (request, response, next) => {
 app.post('/api/persons', (request, response, next) => {
   const body = request.body
 
-  if (body.name === "" || body.number === "") {
+  if (body.name === '' || body.number === '') {
     return response.status(400).json({ error: 'content missing' })
   }
 
@@ -64,14 +65,15 @@ app.post('/api/persons', (request, response, next) => {
   })
 
   person.save()
-  .then(savedPerson => {
-    response.json(savedPerson)
-  })
-  .catch(error => next(error))
+    .then(savedPerson => {
+      response.json(savedPerson)
+    })
+    .catch(error => next(error))
 })
 
 app.delete('/api/persons/:id', (request, response, next) => {
   Person.findByIdAndDelete(request.params.id)
+  // eslint-disable-next-line no-unused-vars
     .then(result => {
       response.status(204).end()
     })
@@ -80,7 +82,7 @@ app.delete('/api/persons/:id', (request, response, next) => {
 
 app.put('/api/persons/:id', (request, response, next) => {
   const body = request.body
-  
+
   const person = {
     name: body.name,
     number: body.number
